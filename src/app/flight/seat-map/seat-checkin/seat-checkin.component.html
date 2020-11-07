@@ -1,0 +1,24 @@
+<div class="container border-box">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Passenger Name</th>
+                <th scope="col">Checked In Status</th>
+                <th scope="col">Passport.No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let pax of paxList let serialNumber=index'>
+                <td>{{pax.name}}</td>
+                <td>{{pax.checkinStatus}}</td>
+                <td>{{pax.passportNumber}}</td>
+                <td *ngIf='isCheckedInPaxMode'>
+                    <button mat-raised-button color='primary' (click)='onOffload(pax)'>Offload</button>
+                </td>
+                <td *ngIf='!isCheckedInPaxMode'>
+                    <button mat-raised-button color='primary' (click)='onCheckin(pax)'>Checkin</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

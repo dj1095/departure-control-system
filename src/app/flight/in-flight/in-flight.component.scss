@@ -1,0 +1,36 @@
+
+$grid-tile-color:#deb887;
+@mixin seat-map-in-flight {
+
+    .mat-grid-tile{
+      background-color:$grid-tile-color;
+    }
+    .mat-grid-list{
+      height: 53vh;
+      margin: 0.1em 0em;
+    }
+    button{
+        background-color: rgb(126, 210, 231);
+        width: 5em;
+      }
+}
+
+.seat-container{
+    @include seat-map-in-flight();
+    .AVML{
+    background-color: yellow;
+    }
+    .NVML{
+        background-color: purple;
+    }
+    .IVML{
+      background-color: tomato;
+    }
+
+}
+
+
+
+
+
+

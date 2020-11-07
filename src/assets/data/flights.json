@@ -1,0 +1,173 @@
+[
+    {
+        "flightNumber": "G9123",
+        "departureDate": "Thu Jan 23 2020",
+        "arrivalDate": "Thu Jan 23 2020",
+        "departureStation": "DEL",
+        "arrivalStation": "SHJ",
+        "departureTime": "0900",
+        "arrivalTime": "1300",
+        "passengerList": [
+            {
+                "name": "Pramodh",
+                "passportNumber": "G1234JK",
+                "checkinStatus": "AC",
+                "passengerType": "WC",
+                "seatNumber": "23",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Trivedh",
+                "passportNumber": "G2234JK",
+                "checkinStatus": "NC",
+                "passengerType": "INF",
+                "seatNumber": "-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Koushik",
+                "passportNumber": "G2235JK",
+                "checkinStatus": "NC",
+                "passengerType": "GN",
+                "seatNumber": "-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            }
+        ]
+    },
+    {
+        "flightNumber": "G9234",
+        "departureDate": "Thu Jan 23 2020",
+        "arrivalDate": "Thu Jan 23 2020",
+        "departureStation": "DEL",
+        "arrivalStation": "SHJ",
+        "departureTime": "0930",
+        "arrivalTime": "1400",
+        "passengerList": [
+            {
+                "name": "Pramodh",
+                "passportNumber": "G1234JK",
+                "checkinStatus": "AC",
+                "passengerType": "WC",
+                "seatNumber": "23",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Trivedh",
+                "passportNumber": "G2234JK",
+                "checkinStatus": "NC",
+                "passengerType": "INF",
+                "seatNumber": "-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Koushik",
+                "passportNumber": "G2235JK",
+                "checkinStatus": "NC",
+                "passengerType": "GN",
+                "seatNumber": "-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            }
+        ]
+    },
+    {
+        "flightNumber": "AI823",
+        "departureDate": "Thu Jan 23 2020",
+        "arrivalDate": "Thu Jan 23 2020",
+        "departureStation": "DEL",
+        "arrivalStation": "BLR",
+        "departureTime": "1600",
+        "arrivalTime": "1830",
+        "passengerList": [
+            {
+                "name": "Pramodh",
+                "passportNumber": "G1234JK",
+                "checkinStatus": "AC",
+                "passengerType": "WC",
+                "seatNumber": "23",
+                "DOB":"-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Trivedh",
+                "passportNumber": "G2234JK",
+                "checkinStatus": "NC",
+                "passengerType": "INF",
+                "seatNumber": "-",
+                "address":{
+                    "city": null,
+                    "state": null,
+                    "postalCode": null
+                },
+                "DOB":"1998-6-19",
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            },
+            {
+                "name": "Koushik",
+                "passportNumber": "-",
+                "checkinStatus": "NC",
+                "passengerType": "GN",
+                "seatNumber": "-",
+                "address": {
+                    "city": "Banglore",
+                    "state": "Karnataka",
+                    "postalCode": "560059"
+                },
+                "DOB":"2000-3-14",
+                "mealPreference": "AVML",
+                "ancillaryServicesList":["ExcessBaggage","FoodAndBeverages"],
+                "inFlightShopReqList":[]
+            }
+        ]
+    }
+]

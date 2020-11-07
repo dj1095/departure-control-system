@@ -1,0 +1,69 @@
+<div class="home-page home-bg">
+    <div class="dcs-header">
+        <h2>Welcome To Departure Control System</h2>
+        <h6><i>Checkin made easy</i></h6>
+    </div>
+    <div class="flight-search-form">
+        <form [formGroup]="flightSearchForm" (ngSubmit)="onSearch()">
+            <div class="form-group">
+                <div class="form-row">
+                    <mat-form-field>
+                        <input
+                        required
+                        matInput
+                        placeholder="From"
+                        name="from"
+                        formControlName="departureStation">
+                        <mat-error *ngIf='flightSearchForm.get("departureStation").touched && !flightSearchForm.get("departureStation").valid'>departureStation is
+                            not valid</mat-error>
+                    </mat-form-field>
+                    <mat-form-field matInput>
+                        <input matInput  placeholder="To" name="to"
+                            formControlName="arrivalStation">
+                        <mat-error *ngIf='flightSearchForm.get("arrivalStation").touched  && !flightSearchForm.get("arrivalStation").valid'>arrivalStation is not
+                            valid</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input required matInput [matDatepicker]="picker" placeholder="Departure Date"
+                            name='departureDate' formControlName="departureDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf='flightSearchForm.get("departureDate").touched && !flightSearchForm.get("departureDate").valid'>departureDate is not valid</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-raised-button color='primary' [disabled]="!flightSearchForm.valid" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="list-group">
+        <div *ngIf='showBusyDisplay else results'>
+            <mat-progress-spinner color="primary" mode="indeterminate" value=50>
+            </mat-progress-spinner>
+        </div>
+        <ng-template #results>
+            <div *ngFor='let flight of result' class="flight-search-results-wrapper">
+                <li class="list-group-item  flex-container">
+                    <div>{{flight.flightNumber}}</div>
+                    <div class="flex-item">
+                        <div class="time">{{flight.departureTime}}</div>
+                        <div class="station cc">{{flight.departureStation}}</div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="time">{{flight.arrivalTime}}</div>
+                        <div class="station cc">{{flight.arrivalStation}}</div>
+                    </div>
+                    <div>
+                        <button mat-raised-button color='primary' (click)="onAssign(flight)">Assign</button>
+                    </div>
+                </li>
+            </div>
+            <div *ngIf='errorOccured' class="alert alert-danger" role="alert">
+                {{errorMessage}}
+            </div>
+            <div class="alert alert-primary flight-search-results-wrapper" role="alert" *ngIf='isNoResultsFound'>
+                No Results Found
+            </div>
+        </ng-template>
+    </div>
+</div>
+

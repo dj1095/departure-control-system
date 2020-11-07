@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAA;EACD,MAAM,EAAE,MAAM;EACd,QAAQ,EAAE,MAAM;CACnB;;AACD,AAAA,WAAW,CAAA;EACP,OAAO,EAAE,MAAM;EACf,KAAK,EAAE,GAAG;CACb;;AACD,AAAA,YAAY,CAAA;EACR,OAAO,EAAE,MAAM;EACf,MAAM,EAAE,KAAK;CAChB",
+    "sources": [
+        "passengers.component.scss"
+    ],
+    "names": [],
+    "file": "passengers.component.css"
+}

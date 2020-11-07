@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,WAAW,EAAE,IAAI;CACpB",
+    "sources": [
+        "seat-checkin.component.scss"
+    ],
+    "names": [],
+    "file": "seat-checkin.component.css"
+}

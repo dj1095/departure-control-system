@@ -1,0 +1,99 @@
+.home-page {
+  margin-left: 0.2em;
+}
+
+.home-bg {
+  background-image: url("src/assets/images/plain-bg.jpg");
+  height: 100vh;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.list-group {
+  margin-top: 10px;
+}
+
+.dcs-header {
+  color: #926239;
+  text-align: center;
+}
+
+/* input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}   */
+a {
+  text-decoration: none;
+}
+
+.mat-form-field {
+  margin: 10px;
+}
+
+.mat-toolbar {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.time {
+  font-size: 1.4rem;
+  color: #4a4a4a;
+}
+
+.station {
+  opacity: .6;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4d4d4d;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.flex-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.cc {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.flight-search-form {
+  width: 70vw;
+}
+
+.flight-search-results-wrapper {
+  width: 70%;
+  margin: 0.2em 0;
+}
+/*# sourceMappingURL=home.component.css.map */

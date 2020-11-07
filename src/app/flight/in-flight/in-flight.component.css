@@ -1,0 +1,26 @@
+.seat-container .mat-grid-tile {
+  background-color: #deb887;
+}
+
+.seat-container .mat-grid-list {
+  height: 53vh;
+  margin: 0.1em 0em;
+}
+
+.seat-container button {
+  background-color: #7ed2e7;
+  width: 5em;
+}
+
+.seat-container .AVML {
+  background-color: yellow;
+}
+
+.seat-container .NVML {
+  background-color: purple;
+}
+
+.seat-container .IVML {
+  background-color: tomato;
+}
+/*# sourceMappingURL=in-flight.component.css.map */

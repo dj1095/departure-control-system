@@ -1,0 +1,9 @@
+<div class="seat-container">
+    <mat-grid-list cols='4' rowHeight="fit" gutterSize="5px">
+        <mat-grid-tile *ngFor='let i of totalSeats'>
+            <button mat-raised-button [matTooltip]="getToolTip(i)" [ngClass]='getColorCodes(i)' id='seat-{{i}}'>
+                {{i}}
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

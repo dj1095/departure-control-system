@@ -1,0 +1,57 @@
+<form [formGroup]="paxForm">
+    <div>
+        <mat-form-field>
+            <mat-label>FirstName</mat-label>
+            <input formControlName='firstName' maxlength="20" matInput type="text" name="firstName">
+            <mat-error *ngIf='paxForm.get("firstName").touched && !paxForm.get("firstName").valid'>Please Enter Valid
+                Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Date Of Birth</mat-label>
+            <input formControlName='dob' matInput [matDatepicker]="picker" name='dob'>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Passport Number</mat-label>
+            <input formControlName='passportNumber' maxlength="7" matInput type="text" placeholder="EX:G1234PK"
+                name="passportNumber">
+            <mat-error *ngIf='paxForm.get("passportNumber").touched && !paxForm.get("passportNumber").valid'>Please
+                Enter a Valid Passport Number</mat-error>
+        </mat-form-field>
+        <div formGroupName='address' class="pax-address">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input formControlName='city' matInput type="text" placeholder="EX:Banglore" name="city">
+                <mat-error
+                    *ngIf='paxForm.get("address").get("city").touched && !paxForm.get("address").get("city").valid'>
+                    Please Enter a Valid city</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>State</mat-label>
+                <input formControlName='state' matInput type="text" placeholder="EX:Karnataka" name="state">
+                <mat-error
+                    *ngIf='paxForm.get("address").get("state").touched && !paxForm.get("address").get("state").valid'>
+                    Please Enter a Valid State</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Postal Code</mat-label>
+                <input formControlName='postalCode' #postalCode matInput type="text" maxlength="6"
+                    placeholder="EX:560059" name="postalCode">
+                <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+                <mat-error
+                    *ngIf='paxForm.get("address").get("postalCode").touched && !paxForm.get("address").get("postalCode").valid'>
+                    Please Enter a Valid Postal Code</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button color='warn' (click)='onCancel()'>Cancel</button>
+            <div class="ctrl-btn" *ngIf='!isPaxUpdate'>
+                <button [disabled]='!paxForm.valid' mat-raised-button color='primary' (click)='onSave()'>Save</button>
+            </div>
+            <div class="ctrl-btn" *ngIf='isPaxUpdate'>
+                <button [disabled]='!paxForm.dirty || !paxForm.valid' mat-raised-button color='primary' (click)='onUpdate()'>Update</button>
+            </div>
+        </div>
+    </div>
+</form>

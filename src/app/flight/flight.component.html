@@ -1,0 +1,167 @@
+<div class="main">
+    <div *ngIf='isFlightLoading'>
+        <mat-progress-bar mode="buffer"></mat-progress-bar>
+    </div>
+    <div *ngIf='loadedFlight else noFLights'>
+        <div class="row">
+            <div class="col">
+                <mat-card class="flight-details-card">
+                    <mat-card-title>{{loadedFlight.flightNumber}}</mat-card-title>
+                    <mat-grid-list cols="2" rowHeight="fit">
+                        <mat-grid-tile>
+                            <mat-card-title-group>
+                                <mat-card-subtitle>Departure Details</mat-card-subtitle>
+                                <mat-card-title>{{loadedFlight.departureStation}}</mat-card-title>
+                                <mat-card-subtitle>{{loadedFlight.departureTime}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{loadedFlight.departureDate}}</mat-card-subtitle>
+                            </mat-card-title-group>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <mat-card-title-group>
+                                <mat-card-subtitle>Arrival Details</mat-card-subtitle>
+                                <mat-card-title>{{loadedFlight.arrivalStation}}</mat-card-title>
+                                <mat-card-subtitle>{{loadedFlight.arrivalTime}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{loadedFlight.arrivalDate}}</mat-card-subtitle>
+                            </mat-card-title-group>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <div *ngIf='isAdminMode'>
+                        <mat-card-actions>
+                            <mat-form-field>
+                                <mat-label>Manage</mat-label>
+                                <mat-select [(ngModel)]='manageSelectedValue'>
+                                    <mat-option *ngFor='let opt of manage' [value]='opt.value'>{{opt.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div *ngIf='manageSelectedValue === "Passengers"'>
+                                <mat-form-field>
+                                    <mat-label>Filter By Missing Doc</mat-label>
+                                    <mat-select [(ngModel)]="missingFilterSelectedValue">
+                                        <mat-option *ngFor='let missingDoc of passengerMissingFilter'
+                                            [value]='missingDoc.value'>
+                                            {{missingDoc.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </mat-card-actions>
+                        <div *ngIf='missingFilterSelectedValue && manageSelectedValue === "Passengers"'>
+                            <app-passengers [checkinStatus]='missingFilterSelectedValue'></app-passengers>
+                            <div class="pax-btn">
+                                <button mat-raised-button color='primary' (click)='createPax()'>Add Passenger</button>
+                            </div>
+                        </div>
+                        <!-- <div *ngIf='manageSelectedValue === "AncillaryServices"'>
+                            <mat-action-list>
+                                <button mat-list-item (click)="save()"> Add </button>
+                                <button mat-list-item (click)="undo()"> Open </button>
+                            </mat-action-list>
+
+                        </div>
+                        <div *ngIf='manageSelectedValue === "SpecialMeals"'>
+                            <mat-action-list>
+                                <button mat-list-item (click)="save()"> Add </button>
+                                <button mat-list-item (click)="undo()"> Open </button>
+                            </mat-action-list>
+
+                        </div>
+                        <div *ngIf='manageSelectedValue === "ShoppingItems"'>
+                            <mat-action-list>
+                                <button mat-list-item (click)="save()"> Add </button>
+                                <button mat-list-item (click)="undo()"> Open </button>
+                            </mat-action-list>
+
+                        </div> -->
+                    </div>
+                    <mat-card-actions *ngIf='!isAdminMode'>
+                        <mat-form-field>
+                            <mat-label>Choose Operation</mat-label>
+                            <mat-select [(ngModel)]="serviceSelectedvalue"
+                                (selectionChange)='onSelected(serviceSelectedvalue)'>
+                                <mat-option *ngFor='let status of services' [value]='status.value'>
+                                    {{status.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf='serviceSelectedvalue === "Checkin"'>
+                            <mat-form-field>
+                                <mat-label>PassengerList</mat-label>
+                                <mat-select [(ngModel)]="checkinStatus">
+                                    <mat-option *ngFor='let status of passengerStatuses' [value]='status.value'>
+                                        {{status.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div *ngIf='serviceSelectedvalue === "Checkin"' class="col">
+                <app-seat-map></app-seat-map>
+            </div>
+            <div *ngIf='serviceSelectedvalue === "InFlight"' class="col">
+                <app-in-flight></app-in-flight>
+            </div>
+        </div>
+        <div *ngIf='checkinStatus!=null && checkinStatus!="" && serviceSelectedvalue === "Checkin"'>
+            <app-passengers [checkinStatus]='checkinStatus'></app-passengers>
+        </div>
+        <div class="in-flight-pax-list" *ngIf='serviceSelectedvalue === "InFlight"'>
+            <mat-accordion displayMode="flat" multi class="mat-table">
+                <section class="mat-elevation-z2 mat-header-row">
+                    <span class="mat-header-cell">Name</span>
+                    <span class="mat-header-cell">In-Flight Services</span>
+                    <span class="mat-header-cell">Shopping Cart</span>
+                </section>
+                <mat-expansion-panel *ngFor='let pax of paxList' (opened)='checkForInFlightServices(pax,f)'>
+                    <mat-expansion-panel-header class="mat-row">
+                        <mat-panel-title>
+                            <span class="mat-cell"> {{pax.name}}</span>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <span class="mat-cell">{{pax.ancillaryServicesList}}</span>
+                        </mat-panel-description>
+                        <mat-panel-description>
+                            <span class="mat-cell">{{pax.inFlightShopReqList}}</span>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <form (ngSubmit)="onSave(f , pax)" #f='ngForm'>
+                        <div class="in-flight-form">
+                            <mat-form-field>
+                                <mat-label>Ancillary Services</mat-label>
+                                <mat-select ngModel name='ancillaries' multiple>
+                                    <mat-option *ngFor="let ancillaryService of ancillaryServicesList"
+                                        [value]="ancillaryService">{{ancillaryService}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Shopping-List</mat-label>
+                                <mat-select ngModel name='shop' multiple>
+                                    <mat-option *ngFor="let shoppingItem of shoppingItemList" [value]="shoppingItem">
+                                        {{shoppingItem}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Meal Preference</mat-label>
+                                <mat-select ngModel name='mealSelect'>
+                                    <mat-option *ngFor="let meal of mealPreferences" [value]="meal">
+                                        {{meal}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <button class="custom-btn" mat-raised-button color='primary'>Save</button>
+                        <button type="button" class="custom-btn" mat-raised-button color='primary'
+                            (click)='checkForInFlightServices(pax,f)'>Cancel</button>
+                    </form>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <ng-template #noFLights>
+        <div *ngIf='!isFlightLoading'>OOPS...! This Url doesn't match anything</div>
+    </ng-template>
+</div>

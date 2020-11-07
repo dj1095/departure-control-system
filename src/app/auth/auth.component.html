@@ -1,0 +1,35 @@
+<div class="container-fluid login-bg">
+    <div class="wrapper">
+        <div class="login-container">
+            <h4>Login</h4>
+            <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+                <div class="dup-form-group">
+                    <mat-form-field>
+                        <input formControlName="userName" matInput type="text" id="userName" placeholder="User name">
+                        <mat-error *ngIf="!signInForm.get('userName').valid && signInForm.get('userName').touched">
+                            {{getSignInErrMsg('USERNAME')}}</mat-error>
+                    </mat-form-field>
+                    <!-- <label for="password">Password</label> -->
+                    <mat-form-field>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" id="password"
+                            placeholder="Password">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" role="button">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="!signInForm.get('password').valid && signInForm.get('password').touched">
+                            {{getSignInErrMsg('PASSWORD')}}</mat-error>
+                    </mat-form-field>
+                    <button [disabled]='!signInForm.valid' mat-raised-button color="warn">Login</button>
+                    <mat-error *ngIf="signInErr">
+                        {{getSignInErrMsg('SIGN_IN')}}</mat-error>
+                </div>
+            </form>
+        </div>
+        <div class="social-btn">
+            <span><p>or Login using</p></span>
+            <button class="fb-icon no-focus" mat-mini-fab [disableRipple]='true' color="primary" (click)='signInWithFB()'>f</button>
+            <button class="gmail-icon no-focus" mat-mini-fab [disableRipple]='true' color="primary" (click)='signInWithGoogle()'>G</button>
+        </div>
+    </div>
+</div>

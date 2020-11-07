@@ -1,0 +1,9 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark ">
+    <a class="navbar-brand" [routerLink]="['/home']">DCS</a>
+    <div *ngIf='loggedIn'>
+      <span>{{loggedInUser}}</span>
+      <button class="btn btn-outline-info my-2 my-sm-0" (click)="onLogout()">Logout</button>
+    </div>
+  </nav>
+</header>

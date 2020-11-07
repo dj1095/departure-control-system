@@ -1,0 +1,108 @@
+
+$mat-grid-tile-color :rgb(135, 222, 210);
+$mat-grid-list-height:30vh;
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+.container{
+    margin-top: 0.1em;
+  }
+
+
+  @mixin flightDetails {
+    .mat-grid-tile{
+        background-color:$mat-grid-tile-color;
+      }
+      .mat-card-actions{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0em .1em;
+      }
+      .mat-grid-list{
+        height:$mat-grid-list-height;
+      }
+      .mat-card{
+        margin: 0em .1em;
+      }
+  }
+
+  .flight-details-card{
+    @include flightDetails();
+  }
+
+  .pax-btn button{
+    margin: 0.3em;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .in-flight-pax-list{
+    margin: .3em;
+    width: 100vw;
+  }
+
+  .in-flight-form{
+   display: flex;
+   justify-content:space-between;
+  }
+
+    .mat-cell, .mat-header-cell {
+      flex: 1;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+.mat-accordion .mat-header-row {
+    padding-left: 1.5rem;
+    padding-right: 2rem;
+    border-bottom: none;
+  }
+
+  .mat-expansion-panel-header.mat-row {
+    border-bottom: none;
+    overflow: hidden;
+  }
+
+
+
+  .mat-table {
+    display: block;
+  }
+
+  .mat-header-row {
+    min-height: $mat-header-row-height;
+  }
+
+  .mat-row {
+    min-height: $mat-row-height;
+  }
+
+  .mat-row, .mat-header-row {
+    display: flex;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: center;
+    padding: 0 $mat-row-horizontal-padding;
+    box-sizing: border-box;
+
+
+    &::after {
+      display: inline-block;
+      min-height: inherit;
+      content: '';
+    }
+  }
+
+.mat-cell, .mat-header-cell {
+      flex: 1;
+      overflow: hidden;
+      word-wrap: break-word;
+}
+.custom-btn{
+   float: right;
+   margin: 0 .5em;
+}
+

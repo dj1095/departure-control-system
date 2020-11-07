@@ -1,0 +1,18 @@
+header nav {
+  margin-left: 0em;
+  font-family: sans-serif;
+}
+
+.navbar-brand {
+  border: 1px solid white;
+  padding: .5rem;
+}
+
+nav a {
+  color: white;
+}
+
+span {
+  color: white;
+}
+/*# sourceMappingURL=header.component.css.map */

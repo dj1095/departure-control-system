@@ -1,0 +1,24 @@
+$thickWhite : rgb(255,255,255);
+
+@mixin brand-border {
+    border: 1px solid white;
+    padding: .5rem;
+}
+
+
+  header nav{
+    margin-left: 0em;
+    font-family: sans-serif;
+  }
+
+  .navbar-brand{
+    @include brand-border();
+  }
+
+  nav a {
+    color:$thickWhite
+  }
+  span{
+      color: $thickWhite;
+  }
+

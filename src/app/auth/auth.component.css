@@ -1,0 +1,82 @@
+.wrapper .social-btn {
+  text-align: center;
+}
+
+.wrapper {
+  position: absolute;
+  right: 10vw;
+}
+
+.login-bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("src/assets/images/flight-travel.jpg");
+  height: 100vh;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.dup-form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: .5em 1em;
+}
+
+.dup-form-group > * {
+  width: 100%;
+}
+
+.login-container {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1em;
+}
+
+.login-container h4 {
+  text-align: center;
+  color: #926239;
+}
+
+@media (max-width: 400px) {
+  .container-fluid {
+    background-image: url("src/assets/images/sky.jpg");
+  }
+}
+
+.fb-icon {
+  margin: 0 .25em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.gmail-icon {
+  margin: 0 .25em;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: red;
+  color: whitesmoke;
+}
+
+.no-focus:focus {
+  outline: none;
+}
+
+.social-btn {
+  margin-top: 1em;
+  font-weight: normal;
+}
+/*# sourceMappingURL=auth.component.css.map */

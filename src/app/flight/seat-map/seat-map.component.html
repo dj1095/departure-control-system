@@ -1,0 +1,14 @@
+<div class="seat-container">
+    <mat-grid-list cols='4' rowHeight="fit" gutterSize="5px">
+        <mat-grid-tile *ngFor='let i of totalSeats'>
+            <button mat-raised-button [ngClass]='getColorCodes(i)'
+            [matTooltip]="getToolTipMsg(i)" (click)="onSeatClick(i)"
+                id='seat-{{i}}'>
+                {{i}}
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<!-- <mat-icon aria-hidden="false" aria-label="airline_seat_recline_extra">
+                    airline_seat_recline_extra</mat-icon> -->

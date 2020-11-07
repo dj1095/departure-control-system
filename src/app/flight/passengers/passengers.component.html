@@ -1,0 +1,38 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Passenger Name</th>
+            <th scope="col">Checked In Status</th>
+            <th scope="col">Passport.No</th>
+            <th scope="col">Seat.No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let pax of filteredPaxList let serialNumber=index'>
+            <th scope="row">{{serialNumber+1}}</th>
+            <td>{{pax.name}}</td>
+            <td>{{pax.checkinStatus}}</td>
+            <td>{{pax.passportNumber}}</td>
+            <td>
+                <form (ngSubmit)='onSeatUpdate(pax,seatUpdateForm)' #seatUpdateForm="ngForm">
+                    <input [disabled]='pax.checkinStatus!="AC" || isAdminMode' matInput class="form-control seat-input"
+                        name="seatNumber" [ngModel]='pax.seatNumber' [value]="pax.seatNumber" required
+                        pattern="^(3[0-6]|[12][0-9]|[1-9])$">
+                    <div *ngIf='pax.checkinStatus==="AC" && !isAdminMode' class="seat-update">
+                        <button [disabled]="!seatUpdateForm.valid" mat-stroked-button color="accent">Update</button>
+                    </div>
+                </form>
+            </td>
+            <td *ngIf='pax.checkinStatus==="AC" && !isAdminMode'>
+                <button mat-raised-button color='primary' (click)='onOffload(pax)'>Offload</button>
+            </td>
+            <td *ngIf='pax.checkinStatus==="NC" && !isAdminMode'>
+                <button mat-raised-button color='primary' (click)='onCheckin(pax)'>Checkin</button>
+            </td>
+            <td *ngIf='isAdminMode'>
+                <button mat-raised-button color='primary' (click)='openPax(pax)'>Open</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

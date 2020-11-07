@@ -1,0 +1,30 @@
+$grid-tile-color:#deb887;
+
+@mixin seat-container-mixin {
+  .mat-grid-tile{
+    background-color:$grid-tile-color;
+  }
+  .mat-grid-list{
+    height: 53vh;
+    margin: 0.1em 0em;
+  }
+}
+.seat-container{
+  @include seat-container-mixin();
+}
+
+
+
+button{
+  background-color: rgb(126, 210, 231);
+  width: 5em;
+}
+.checked-in{
+  background-color: rgb(183, 22, 197);
+}
+.wheel-chair{
+  background-color: rgb(221, 132, 16);
+}
+.infant-associated{
+  background-color: rgb(165, 255, 80);
+}
